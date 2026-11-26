@@ -32,3 +32,11 @@ console.log(
   "Tìm 'áo', tối đa 300k:",
   filterProducts(products, { keyword: "áo", maxPrice: 300000 }).map((p) => p.name)
 );
+
+import { searchByPriceRange, groupByCategory } from "../src/utils/product.ts";
+
+console.log(
+  "Giá từ 150k đến 450k:",
+  searchByPriceRange(products, 150000, 450000).map((p) => p.name)
+);
+console.log("Thống kê theo danh mục:", groupByCategory(products));

@@ -28,3 +28,15 @@ export function filterProducts(products: Product[], filter: ProductFilter = {}):
   if (sort === "desc") return [...result].sort((a, b) => b.price - a.price);
   return result;
 }
+
+export function searchByPriceRange(products: Product[], min: number, max: number): Product[] {
+  return products.filter((p) => p.price >= min && p.price <= max);
+}
+
+export function groupByCategory(products: Product[]): Record<string, number> {
+  return products.reduce<Record<string, number>>((acc, p) => {
+    acc[p.category] = (acc[p.category] ?? 0) + 1;
+    return acc;
+  }, {});
+}
+
